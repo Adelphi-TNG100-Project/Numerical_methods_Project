@@ -105,7 +105,6 @@ project-root/
 * Compare satellites with different masses or environments
 * Fit a model to describe magnetic field amplification timescales
 
----
 
 # **Additional Notes**
 
