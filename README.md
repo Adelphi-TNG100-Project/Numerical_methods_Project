@@ -5,7 +5,6 @@ This repository will be used to complete my work on my computational project for
 
 Exploring the Timescale Dependence of Magnetic Field Growth in Satellite Galaxies
 
----
 
 # **Project Description**
 
@@ -13,7 +12,7 @@ This project investigates how magnetic fields grow over time in satellite galaxi
 
 To address this, I will reconstruct galaxy evolutionary histories using merger tree data to identify the moment of central-to-satellite transition. I will then track magnetic field strength as a function of redshift (time) and measure how it changes relative to the time of accretion. The project will apply numerical methods such as interpolation, time-series analysis, and averaging to handle discrete simulation outputs and extract meaningful trends. By analyzing magnetic field growth as a function of time since infall, this work aims to constrain the amplification timescale and better understand environmental effects in galaxy evolution.
 
----
+
 
 # **Planned Repository Structure**
 
@@ -42,7 +41,7 @@ project-root/
 └── requirements.txt
 ```
 
----
+
 
 # **Resources**
 
@@ -54,7 +53,7 @@ project-root/
 * Matplotlib (visualization)
 * Research literature on magnetic field amplification in satellite galaxies
 
----
+
 
 # **Project Plan and Timeline**
 
@@ -97,7 +96,7 @@ project-root/
 * Generate final plots and interpret results
 * Clean and document code
 
----
+
 
 # **Reach Goals**
 
