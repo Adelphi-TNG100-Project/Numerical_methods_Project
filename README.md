@@ -47,8 +47,8 @@ Numerical_methods_Project/
 
 ## Scientific Methods
 
-1. **Sample selection** — query satellite galaxies at z = 0 from TNG100-1 (`primary_flag=0`, log M★ ≥ 9.5)
-2. **Merger tree download** — retrieve Main Progenitor Branch (MPB) per galaxy via SubLink (`iapi.gettree`)
+1. **Sample selection** - query satellite galaxies at z = 0 from TNG100-1 (`primary_flag=0`, log M★ ≥ 9.5)
+2. **Merger tree download** - retrieve Main Progenitor Branch (MPB) per galaxy via SubLink (`iapi.gettree`)
 3. **Time conversion** — redshift → lookback time using `astropy.cosmology.FlatLambdaCDM` (Planck 2015)
 4. **Unit conversion** — comoving → physical B-field: B_phys = B_com / a²
 5. **Infall detection** — identify last snapshot where `SubfindID = GroupFirstSub`; align as Δt = t_infall − t_lb
