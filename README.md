@@ -49,12 +49,12 @@ Numerical_methods_Project/
 
 1. **Sample selection** - query satellite galaxies at z = 0 from TNG100-1 (`primary_flag=0`, log M★ ≥ 9.5)
 2. **Merger tree download** - retrieve Main Progenitor Branch (MPB) per galaxy via SubLink (`iapi.gettree`)
-3. **Time conversion** — redshift → lookback time using `astropy.cosmology.FlatLambdaCDM` (Planck 2015)
-4. **Unit conversion** — comoving → physical B-field: B_phys = B_com / a²
-5. **Infall detection** — identify last snapshot where `SubfindID = GroupFirstSub`; align as Δt = t_infall − t_lb
-6. **Kernel smoothing** — Gaussian Nadaraya-Watson smoother applied in lookback time
-7. **Bandwidth selection** — leave-one-out cross-validation (LOOCV) minimizing CV(h) = (1/n)Σ(Bⱼ − B̂₋ⱼ)²
-8. **Growth model fit** — B(Δt) = B₀(1 − e^(−Δt/τ)) fit to post-infall smoothed median
+3. **Time conversion** - redshift → lookback time using `astropy.cosmology.FlatLambdaCDM` (Planck 2015)
+4. **Unit conversion** - comoving → physical B-field: B_phys = B_com / a²
+5. **Infall detection** - identify last snapshot where `SubfindID = GroupFirstSub`; align as Δt = t_infall − t_lb
+6. **Kernel smoothing** - Gaussian Nadaraya-Watson smoother applied in lookback time
+7. **Bandwidth selection** - leave-one-out cross-validation (LOOCV) minimizing CV(h) = (1/n)Σ(Bⱼ − B̂₋ⱼ)²
+8. **Growth model fit** - B(Δt) = B₀(1 − e^(−Δt/τ)) fit to post-infall smoothed median
 
 ---
 
