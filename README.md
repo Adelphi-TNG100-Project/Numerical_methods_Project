@@ -7,7 +7,7 @@
 
 ---
 
-## Overview
+## Description
 
 This project investigates how magnetic fields grow over time in satellite galaxies using the [IllustrisTNG](https://www.tng-project.org/) cosmological MHD simulation (TNG100-1).
 
