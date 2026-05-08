@@ -1,7 +1,6 @@
 # Exploring the Timescale Dependence of Magnetic Field Growth in Satellite Galaxies
 
-**Mariane Diby | PHY 225-001 — Computational Physics | Adelphi University**
-**Advisor: Dr. Bryanne McDonough**
+**Mariane Diby | PHY 225-001 **
 
 [![Python](https://img.shields.io/badge/Python-3.10+-blue)](https://python.org)
 [![TNG](https://img.shields.io/badge/Data-IllustrisTNG-orange)](https://tng-project.org)
@@ -20,32 +19,7 @@ We reconstruct each galaxy's full magnetic field history using merger tree data,
 
 ## Repository Structure
 
-```
-Numerical_methods_Project/
-│
-├── TNGWorkshop/                         ← main working directory
-│   ├── magnetic_field_analysis.ipynb    ← MAIN FILE: run this
-│   ├── iapi.py                          ← TNG API helper (required)
-│   ├── trees/                           ← cached merger tree HDF5 files (auto-generated)
-│   └── results/
-│       └── figures/                     ← all output plots saved here
-│
-├── cutouts/                             ← raw TNG particle cutout data
-│   └── stars_565261.hdf5
-│
-├── methods_draft.ipynb                  ← methods section draft (report companion)
-├── README.md
-├── requirements.txt
-└── .gitignore
-```
-
-> **For reviewers:** The only file you need to run is `TNGWorkshop/magnetic_field_analysis.ipynb`. All functions are defined and called within that notebook in order. The `methods_draft.ipynb` at the root contains the written methods section with equations.
-
----
-
-## Recommended Repository Reorganization
-
-> **Note for reviewer:** The repository is functional as-is, but the following reorganization would improve clarity:
+> **For reviewers:** The only file you need to run is `Notebooks/magnetic_field_analysis.ipynb`. All functions are defined and called within that notebook in order. The `methods_draft.ipynb` at the root contains the written methods section with equations.
 
 ```
 Numerical_methods_Project/
@@ -86,6 +60,10 @@ Numerical_methods_Project/
 
 ## Installation
 
+### Option 0: Fork this repo
+
+IF you wish to test this on your own, please fork this and make the edits within your forked repo. Otherwise read through my processes below.
+
 ### Option 1: GitHub Codespaces (recommended)
 Click **Code → Open with Codespaces** on the repository page. No local setup needed — this project was developed entirely in Codespaces.
 
@@ -101,27 +79,28 @@ pip install -r requirements.txt
 
 You need a free account at [tng-project.org](https://www.tng-project.org/users/register/).
 
-Once registered, open `TNGWorkshop/iapi.py` and replace:
+Once registered, open `Notebooks/iapi.py` and replace:
 ```python
 headers = {"api-key": "YOUR_API_KEY_HERE"}
 ```
+It currently has my own api-key but you can replace it with yours in your fork if you wish to try.
 
 ---
 
 ## Running the Code
 
-1. Open `TNGWorkshop/magnetic_field_analysis.ipynb`
+1. Open `Notebooks/magnetic_field_analysis.ipynb`
 2. Run all cells in order (Kernel → Restart & Run All)
 
-**First run:** merger tree HDF5 files download automatically to `TNGWorkshop/trees/` (~1–2 sec/galaxy, cached after first run).
+**First run:** merger tree HDF5 files download automatically to ` trees/` (~1–2 sec/galaxy, cached after first run).
 
-**If you get a 403 error** on a specific subhalo: the code prints the URL to check in your browser. Some subhalos have no merger tree — these are automatically skipped.
+**If you get a 403 error** on a specific subhalo: the code prints the URL to check in your browser. Some subhalos have no merger tree. These are automatically skipped.
 
 ---
 
 ## Output Figures
 
-All figures saved to `TNGWorkshop/results/figures/`:
+All figures saved to `results/figures/`:
 
 | File | Description |
 |---|---|
@@ -152,8 +131,8 @@ All figures saved to `TNGWorkshop/results/figures/`:
 # Build snapshot lookup table
 SNAP_TABLE = build_snapshot_table()
 
-# Query 20 satellite galaxies at z=0
-satellites_z0 = query_satellites(snap=99, stellar_mass_min_log=9.5, limit=20)
+# Query 40 satellite galaxies at z=0
+satellites_z0 = query_satellites(snap=99, stellar_mass_min_log=9.5, limit=40)
 
 # Download merger trees + compute B-field histories
 all_galaxies = process_all_satellites(satellites_z0)
@@ -169,10 +148,10 @@ plot_smoothed_ensemble(all_galaxies)
 
 ## Known Limitations
 
-- Results are based on a subsample of ~10–20 galaxies (preliminary)
+- Results are based on a subsample of ~10–40 galaxies (preliminary)
 - Some subhalo IDs return 403 errors (no merger tree available) and are skipped automatically
 - The exponential fit requires N ≥ 30 galaxies for reliable results
-
+- Script errors 
 ---
 
 ## References
@@ -187,4 +166,4 @@ plot_smoothed_ensemble(all_galaxies)
 
 MIT License — see `LICENSE` file.
 
-> **Note:** This project incorporates `iapi.py`, originally written by Bryanne McDonough and modified for this project. The TNG simulation data is subject to the [IllustrisTNG data usage policy](https://www.tng-project.org/data/usage/).
+> **Note:** This project incorporates `iapi.py`, originally written by Bryanne McDonough in her TNGWorkshops notebooks and modified for this project. The TNG simulation data is subject to the [IllustrisTNG data usage policy](https://www.tng-project.org/data/usage/).
