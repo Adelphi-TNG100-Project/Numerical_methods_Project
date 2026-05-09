@@ -167,3 +167,14 @@ plot_smoothed_ensemble(all_galaxies)
 MIT License — see `LICENSE` file.
 
 > **Note:** This project incorporates `iapi.py`, originally written by Bryanne McDonough in her TNGWorkshops notebooks and modified for this project. The TNG simulation data is subject to the [IllustrisTNG data usage policy](https://www.tng-project.org/data/usage/).
+
+## AI Assistance Disclosure
+
+This project used [Claude](https://claude.ai) (Anthropic) as a coding assistant throughout development. Specific uses included:
+
+- Debugging TNG API queries and HTTP errors
+- Structuring the analysis pipeline and notebook layout
+- Learning and refining code cells (kernel smoothing, LOOCV, some plotting)
+- Organization and neatness
+
+All code in this repository has been initiated, reviewed, tested, and modified by the author. All scientific interpretations, methodological decisions, and conclusions are the author's own.
