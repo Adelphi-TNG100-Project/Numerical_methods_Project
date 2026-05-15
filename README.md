@@ -1,7 +1,6 @@
 # Exploring the Timescale Dependence of Magnetic Field Growth in Satellite Galaxies
 
-**Mariane Diby | PHY 225-001**
-**Advisor: Dr. Bryanne McDonough | Adelphi University**
+**Mariane Diby | PHY 225-001 | Adelphi University**
 
 [![Python](https://img.shields.io/badge/Python-3.10+-blue)](https://python.org)
 [![TNG](https://img.shields.io/badge/Data-IllustrisTNG-orange)](https://tng-project.org)
@@ -132,7 +131,7 @@ headers = {"api-key": "YOUR_API_KEY_HERE"}
 
 **First run:** merger tree HDF5 files download automatically to `trees/` (~1–2 sec/galaxy, cached after first run). Subsequent runs load from cache and are much faster.
 
-**If you get a 403 error** on a specific subhalo: the code prints the browser URL to inspect the subhalo manually. Some subhalos have no merger tree in the API — these are automatically skipped.
+**If you get a 403 error** on a specific subhalo: the code prints the browser URL to inspect the subhalo manually. Some subhalos have no merger tree in the API. These are automatically skipped.
 
 ---
 
@@ -192,7 +191,7 @@ With infall: 43
 
 - Results are based on a subsample (~10–50 galaxies) — the exponential fit distributions require N ≥ 30 for robust statistics
 - Some subhalo IDs return 403 errors (no merger tree available) and are skipped automatically
-- Analysis is restricted to `SubhaloGrNr = 0` (one host halo) — future work will generalize to a broader sample
+- Analysis is restricted to `SubhaloGrNr = 0` (one host halo); future work will generalize to a broader sample
 - The pre-infall (Δt < 0) regime is sparsely sampled in the current subsample
 
 ---
