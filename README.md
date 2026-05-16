@@ -9,34 +9,34 @@
 
 ## What Is This Project About?
 
-Galaxies contain magnetic fields — invisible forces that influence how gas moves, how stars form, and how galaxies evolve over billions of years. We still don't fully understand what drives the strength of these fields or how they change over time.
+Galaxies contain magnetic fields which are invisible forces that influence how gas moves, how stars form, and how galaxies evolve over billions of years. We still don't fully understand what drives the strength of these fields or how they change over time.
 
-Recent work by McDonough & Poulin (2025) — the advisor on this project — made a surprising discovery: **satellite galaxies** (galaxies orbiting inside a larger host galaxy's gravitational influence) have magnetic fields roughly **10 times stronger** than central galaxies of the same size and mass. This suggests that something happens *environmentally* — during the process of falling into a host — that amplifies the magnetic field.
+Recent work by McDonough & Poulin (2025), the advisor on this project, made a surprising discovery: **satellite galaxies** (galaxies orbiting inside a larger host galaxy's gravitational influence) have magnetic fields roughly **10 times stronger** than central galaxies of the same size and mass. This suggests that something happens *environmentally* during the process of falling into a host that amplifies the magnetic field.
 
 But that study only looked at galaxies at the present day (z = 0). It could not answer: **when does this amplification start, and how fast does it happen?**
 
-**This project is the follow-up.** By reconstructing each satellite galaxy's full history back through cosmic time using simulation merger trees, we track how the magnetic field evolves *before and after* the moment the galaxy first falls into its host. The goal is to measure the **characteristic timescale** of this amplification — how many billions of years it takes for the field to grow.
+**This project is the follow-up.** By reconstructing each satellite galaxy's full history back through cosmic time using simulation merger trees, we track how the magnetic field evolves *before and after* the moment the galaxy first falls into its host (infall). The goal is to measure the **characteristic timescale** of this amplification and figure out how many billions of years it takes for the field to grow.
 
 ---
 
-## What You Should Expect to See in the Results
+## What You Should Expect to See in the Results (What is my notebook showing?)?
 
-This section explains what each output figure shows and what to look for — especially for reviewers unfamiliar with the astrophysics context.
+This section explains what each output figure shows and what to look for, especially for reviewers unfamiliar with the astrophysics context.
 
 ### Figure 1 — `B_vs_z_subhalo_*.png` (Raw B-field vs. Redshift)
 **What it is:** The raw magnetic field strength of a single satellite galaxy at each simulation snapshot, plotted against redshift (z). Higher redshift = earlier in the universe's history. The vertical red line marks the moment of infall (when the galaxy became a satellite).
 
-**What to look for:** The data is deliberately noisy — this is real simulation data, not a toy example. You should notice that the field strength varies a lot snapshot to snapshot. This motivates the smoothing step.
+**What to look for:** The data is deliberately noisy because it is a real simulation data, not a toy example. You should notice that the field strength varies a lot snapshot to snapshot. This motivates the smoothing step.
 
 ### Figure 2 — `B_vs_z_all_raw.png` (All Galaxies Overlaid)
 **What it is:** All satellite galaxies in the sample plotted together, color-coded by their infall redshift.
 
-**What to look for:** Whether all galaxies show a similar general trend (field growing over time), or whether there is a lot of scatter. Scatter is expected — different galaxies have different histories.
+**What to look for:** Whether all galaxies show a similar general trend (field growing over time), or whether there is a lot of scatter. Scatter is expected since different galaxies have different histories.
 
 ### Figure 3 — `diagnostics_subhalo_*.png` (LOOCV + Smoothing Diagnostic)
 **What it is:** A two-panel plot. Left: the cross-validation score as a function of bandwidth (the smoothing scale). Right: the raw noisy data alongside the smoothed curve.
 
-**What to look for:** On the left, there should be a clear minimum — this is the optimal bandwidth h*. On the right, the red curve should follow the general shape of the data without chasing every individual spike.
+**What to look for:** On the left, there should be a clear minimum. This is the optimal bandwidth h*. On the right, the red curve should follow the general shape of the data without chasing every individual spike.
 
 ### Figure 4 — `B_smoothed_vs_dt_infall.png` (Main Science Result)
 **What it is:** The central result of the project. All galaxies' smoothed magnetic field histories are aligned at Δt = 0 (the moment of infall) and plotted together. The red line is the median across all galaxies; the red shaded band is the scatter (16th–84th percentile).
@@ -57,7 +57,7 @@ This section explains what each output figure shows and what to look for — esp
 
 ## Repository Structure
 
-> **For reviewers:** The only file you need to run is `notebooks/magnetic_field_analysis.ipynb`. All functions are defined and called within that notebook in order.
+> **For reviewers:** The only file you need to run is `Notebooks/magnetic_field_analysis.ipynb`. All functions are defined and called within that notebook in order.
 
 ```
 Numerical_methods_Project/
@@ -92,7 +92,7 @@ Numerical_methods_Project/
 4. **Unit conversion** — comoving → physical B-field: B_phys = B_com / a² where a = 1/(1+z)
 5. **Infall detection** — identify last snapshot where `SubfindID = GroupFirstSub`; define Δt = t_infall − t_lb so Δt > 0 is after infall
 6. **Kernel smoothing** — Gaussian Nadaraya-Watson smoother applied in lookback time (log B space) to handle non-uniform snapshot spacing
-7. **Bandwidth selection** — leave-one-out cross-validation (LOOCV) minimizing CV(h) = (1/n)Σ(Bⱼ − B̂₋ⱼ)² — fully data-driven, no manual tuning
+7. **Bandwidth selection** — leave-one-out cross-validation (LOOCV) minimizing CV(h) = (1/n)Σ(Bⱼ − B̂₋ⱼ)² fully data-driven, no manual tuning
 8. **Growth model fit** — B(Δt) = B₀(1 − e^(−Δt/τ)) fit per galaxy individually, then τ and B₀ distributions plotted
 
 ---
@@ -103,7 +103,9 @@ Numerical_methods_Project/
 If you wish to test this yourself, please fork this repository and make edits within your own fork.
 
 ### Option 1: GitHub Codespaces (recommended)
-Click **Code → Open with Codespaces** on the repository page. No local setup needed — this project was developed entirely in Codespaces.
+Click **Code → Open with Codespaces** on the repository page. No local setup needed, this project was developed entirely in Codespaces.
+
+pip install -r requirements.txt -- to download all needed packages 
 
 ### Option 2: Local setup
 
@@ -193,6 +195,7 @@ With infall: 43
 - Some subhalo IDs return 403 errors (no merger tree available) and are skipped automatically
 - Analysis is restricted to `SubhaloGrNr = 0` (one host halo); future work will generalize to a broader sample
 - The pre-infall (Δt < 0) regime is sparsely sampled in the current subsample
+- Still need to figure out the best way to fit individual post infall data
 
 ---
 
